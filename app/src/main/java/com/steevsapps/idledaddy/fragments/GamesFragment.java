@@ -1,6 +1,5 @@
 package com.steevsapps.idledaddy.fragments;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -143,12 +142,7 @@ public class GamesFragment extends Fragment
             fab.show();
         }
 
-        viewModel.getGames().observe(this, new Observer<List<Game>>() {
-            @Override
-            public void onChanged(@Nullable List<Game> games) {
-                setGames(games);
-            }
-        });
+        viewModel.getGames().observe(this, this::setGames);
         loadData();
 
         return view;

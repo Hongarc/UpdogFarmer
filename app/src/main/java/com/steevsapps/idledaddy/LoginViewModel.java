@@ -23,12 +23,9 @@ public class LoginViewModel extends ViewModel {
     private final MutableLiveData<Integer> timeDifference = new MutableLiveData<>();
 
     private final SingleLiveEvent<Void> timeoutEvent = new SingleLiveEvent<>();
-    private final Runnable timeoutRunnable = new Runnable() {
-        @Override
-        public void run() {
-            // Trigger event to show a timeout error
-            timeoutEvent.call();
-        }
+    private final Runnable timeoutRunnable = () -> {
+        // Trigger event to show a timeout error
+        timeoutEvent.call();
     };
 
     private boolean timeAligned = false;

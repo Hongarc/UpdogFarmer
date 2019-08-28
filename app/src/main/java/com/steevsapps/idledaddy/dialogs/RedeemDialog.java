@@ -3,7 +3,6 @@ package com.steevsapps.idledaddy.dialogs;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -46,12 +45,9 @@ public class RedeemDialog extends DialogFragment {
         final View view = LayoutInflater.from(getActivity()).inflate(R.layout.redeem_dialog, null);
         final EditText input = view.findViewById(R.id.input);
         builder.setView(view);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (callback != null) {
-                    callback.onYesPicked(input.getText().toString());
-                }
+        builder.setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+            if (callback != null) {
+                callback.onYesPicked(input.getText().toString());
             }
         });
         return builder.create();

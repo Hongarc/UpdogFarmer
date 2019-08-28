@@ -2,7 +2,6 @@ package com.steevsapps.idledaddy.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,19 +54,15 @@ public class GameOptionsDialog extends DialogFragment {
         }
         return new AlertDialog.Builder(getActivity())
                 .setTitle(title)
-                .setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int position) {
-                        if (position == 0) {
-                            addRemoveBlacklist();
-                        }
+                .setItems(options, (dialogInterface, position) -> {
+                    if (position == 0) {
+                        addRemoveBlacklist();
                     }
                 })
                 .create();
     }
 
     private void addRemoveBlacklist() {
-        final String msg;
         final List<String> blacklist = PrefsManager.getBlacklist();
         if (blacklisted) {
             blacklist.remove(appId);

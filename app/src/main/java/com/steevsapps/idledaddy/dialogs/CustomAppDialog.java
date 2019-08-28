@@ -3,7 +3,6 @@ package com.steevsapps.idledaddy.dialogs;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -65,17 +64,14 @@ public class CustomAppDialog extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.idle_custom_app)
                 .setView(view)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (spinner.getSelectedItemPosition()) {
-                            case TYPE_APPID:
-                                idleHiddenApp();
-                                break;
-                            case TYPE_CUSTOM:
-                                idleNonSteamApp();
-                                break;
-                        }
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    switch (spinner.getSelectedItemPosition()) {
+                        case TYPE_APPID:
+                            idleHiddenApp();
+                            break;
+                        case TYPE_CUSTOM:
+                            idleNonSteamApp();
+                            break;
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)

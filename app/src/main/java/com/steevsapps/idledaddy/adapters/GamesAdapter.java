@@ -3,6 +3,8 @@ package com.steevsapps.idledaddy.adapters;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -69,17 +71,9 @@ public class GamesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private void updateDataInternal(final List<Game> newGames) {
         final List<Game> oldGames = new ArrayList<>(dataSet);
         final Handler handler = new Handler(Looper.getMainLooper());
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new GamesDiffCallback(newGames, oldGames));
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        applyDiffResult(newGames, diffResult);
-                    }
-                });
-            }
+        new Thread(() -> {
+            final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new GamesDiffCallback(newGames, oldGames));
+            handler.post(() -> applyDiffResult(newGames, diffResult));
         }).start();
     }
 
@@ -133,8 +127,9 @@ public class GamesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == ITEM_HEADER) {
             final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.games_header_item, parent, false);
             return new VHHeader(view);

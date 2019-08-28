@@ -2,11 +2,9 @@ package com.steevsapps.idledaddy.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,13 +47,10 @@ public class AutoDiscoverDialog extends DialogFragment implements View.OnClickLi
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(AutoDiscoverViewModel.class);
         viewModel.init(SteamWebHandler.getInstance());
-        viewModel.getStatus().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                statusTv.setVisibility(View.VISIBLE);
-                statusTv.setText(s);
-                autoDiscoverBtn.setEnabled(viewModel.isFinished());
-            }
+        viewModel.getStatus().observe(this, s -> {
+            statusTv.setVisibility(View.VISIBLE);
+            statusTv.setText(s);
+            autoDiscoverBtn.setEnabled(viewModel.isFinished());
         });
     }
 
@@ -63,7 +58,7 @@ public class AutoDiscoverDialog extends DialogFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_auto_discover:
-                viewModel.autodiscover();
+                viewModel.autoDiscover();
                 break;
         }
     }

@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import com.google.gson.annotations.SerializedName;
 
 public class Game implements Comparable<Game>, Parcelable {
-    private final static String IMG_URL = "http://media.steampowered.com/steamcommunity/public/images/apps/%d/%s.jpg";
 
     @SerializedName("appid")
     public int appId;

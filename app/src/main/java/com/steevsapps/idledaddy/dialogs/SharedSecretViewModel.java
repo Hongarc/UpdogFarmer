@@ -23,7 +23,7 @@ import eu.chainfire.libsuperuser.Shell;
 public class SharedSecretViewModel extends AndroidViewModel {
     private final static String TAG = SharedSecretViewModel.class.getSimpleName();
     // Shell command to read SteamGuard file
-    private final static String STEAMGUARD_CMD = "cat /data/data/com.valvesoftware.android.steam.community/files/Steamguard-%d";
+    private final static String STEAM_GUARD_CMD = "cat /data/data/com.valvesoftware.android.steam.community/files/Steamguard-%d";
 
     private final MutableLiveData<String> statusText = new MutableLiveData<>();
 
@@ -48,7 +48,7 @@ public class SharedSecretViewModel extends AndroidViewModel {
         statusText.setValue(value);
     }
 
-    @SuppressLint("staticfieldleak")
+    @SuppressLint("StaticFieldLeak")
     public void getSharedSecret() {
         new AsyncTask<Void,Void,Void>() {
             @Override
@@ -60,7 +60,7 @@ public class SharedSecretViewModel extends AndroidViewModel {
                 }
 
                 // Read the SteamGuard file
-                suResult = Shell.SU.run(String.format(Locale.US, STEAMGUARD_CMD, steamId));
+                suResult = Shell.SU.run(String.format(Locale.US, STEAM_GUARD_CMD, steamId));
                 return null;
             }
 

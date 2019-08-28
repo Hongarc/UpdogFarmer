@@ -41,7 +41,7 @@ public class AutoDiscoverViewModel extends AndroidViewModel {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void autodiscover() {
+    public void autoDiscover() {
         finished = false;
         new AsyncTask<Void,String,Boolean>() {
             @Override

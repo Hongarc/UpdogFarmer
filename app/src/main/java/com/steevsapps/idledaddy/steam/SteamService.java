@@ -103,6 +103,7 @@ public class SteamService extends Service {
     private final static int CUSTOM_OBFUSCATION_MASK = 0xF00DBAAD;
 
     // Events
+    public final static String START_LOGIN = "START_LOGIN";
     public final static String LOGIN_EVENT = "LOGIN_EVENT"; // Emitted on login
     public final static String RESULT = "RESULT"; // Login result
     public final static String DISCONNECT_EVENT = "DISCONNECT_EVENT"; // Emitted on disconnect
@@ -941,6 +942,8 @@ public class SteamService extends Service {
     private void onConnected(ConnectedCallback callback) {
         Log.i(TAG, "Connected()");
         connected = true;
+        final Intent intent = new Intent(START_LOGIN);
+        LocalBroadcastManager.getInstance(SteamService.this).sendBroadcast(intent);
         if (logOnDetails != null) {
             doLogin();
         } else {
@@ -1193,9 +1196,7 @@ public class SteamService extends Service {
                         .setGameId(game.appId);
             }
         }
-        executor.execute(() -> {
-            steamClient.send(gamesPlayed);
-        });
+        executor.execute(() -> steamClient.send(gamesPlayed));
         // Tell the activity
         LocalBroadcastManager.getInstance(SteamService.this).sendBroadcast(new Intent(NOW_PLAYING_EVENT));
     }
@@ -1237,22 +1238,5 @@ public class SteamService extends Service {
         } catch (NumberFormatException|InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Open a cottage door (Winter Sale 2018)
-     */
-    public void openCottageDoor() {
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                boolean result = webHandler.openCottageDoor();
-                if (result) {
-                    showToast(getString(R.string.door_success));
-                } else {
-                    showToast(getString(R.string.door_fail));
-                }
-            }
-        });
     }
 }

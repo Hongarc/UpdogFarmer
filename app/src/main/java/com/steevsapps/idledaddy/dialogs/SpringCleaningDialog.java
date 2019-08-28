@@ -1,11 +1,9 @@
 package com.steevsapps.idledaddy.dialogs;
 
 import android.app.Dialog;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -60,13 +58,10 @@ public class SpringCleaningDialog extends DialogFragment implements View.OnClick
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(SpringCleaningViewModel.class);
         viewModel.init(SteamWebHandler.getInstance(), ((BaseActivity) getActivity()).getService());
-        viewModel.getStatus().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                statusTv.setVisibility(View.VISIBLE);
-                statusTv.setText(s);
-                dailyTasksBtn.setEnabled(viewModel.isFinished());
-            }
+        viewModel.getStatus().observe(this, s -> {
+            statusTv.setVisibility(View.VISIBLE);
+            statusTv.setText(s);
+            dailyTasksBtn.setEnabled(viewModel.isFinished());
         });
     }
 }

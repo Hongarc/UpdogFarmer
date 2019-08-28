@@ -405,7 +405,7 @@ public class SteamWebHandler {
 
     public void clearFromQueue(String appId) throws Exception {
         final String url = STEAM_STORE + "app/10";
-        final Document doc = Jsoup.connect(url)
+        Jsoup.connect(url)
                 .ignoreContentType(true)
                 .referrer(STEAM_STORE)
                 .followRedirects(true)
@@ -466,7 +466,7 @@ public class SteamWebHandler {
     private boolean registerApiKey() {
         final String url = STEAM_COMMUNITY + "dev/registerkey";
         try {
-            final Document doc = Jsoup.connect(url)
+            Jsoup.connect(url)
                     .ignoreContentType(true)
                     .followRedirects(true)
                     .referrer(STEAM_COMMUNITY)
@@ -485,7 +485,6 @@ public class SteamWebHandler {
 
     /**
      * Get a list of task appid for the Spring Cleaning Event
-     * @return
      */
     public List<String> getTaskAppIds() {
         final String url = STEAM_STORE + "springcleaning?l=english";
@@ -511,52 +510,6 @@ public class SteamWebHandler {
             e.printStackTrace();
         }
         return taskAppIds;
-    }
-
-    public boolean openCottageDoor() {
-        String url = STEAM_STORE + "promotion/cottage_2018/?l=english";
-        Document doc;
-        try {
-            doc = Jsoup.connect(url)
-                    .followRedirects(true)
-                    .referrer(STEAM_STORE)
-                    .cookies(generateWebCookies())
-                    .get();
-        } catch (IOException e) {
-            Log.e(TAG, "Failed to open door", e);
-            return false;
-        }
-
-        final Element door = doc.select("div[data-door-id]").not(".cottage_door_open").first();
-        if (door == null) {
-            Log.e(TAG, "Didn't find any doors to open");
-            return false;
-        }
-
-        final String doorId = door.attr("data-door-id");
-        Log.i(TAG, "Opening door " + doorId);
-
-        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
-        final String t = sdf.format(new Date());
-
-        url = STEAM_STORE + "promotion/opencottagedoorajax";
-        try {
-            Jsoup.connect(url)
-                    .ignoreContentType(true)
-                    .followRedirects(true)
-                    .referrer(url)
-                    .cookies(generateWebCookies())
-                    .data("sessionid", sessionId)
-                    .data("door_index", doorId)
-                    .data("t", t)
-                    .data("open_door", "true")
-                    .post();
-        } catch (IOException e) {
-            Log.e(TAG, "Failed to open door " + doorId, e);
-            return false;
-        }
-
-        return true;
     }
 
     @IntDef({

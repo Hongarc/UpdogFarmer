@@ -2,11 +2,8 @@ package com.steevsapps.idledaddy.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,12 +58,9 @@ public class SharedSecretDialog extends DialogFragment implements View.OnClickLi
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(SharedSecretViewModel.class);
         viewModel.init(getArguments().getLong(STEAM_ID));
-        viewModel.getStatus().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                statusTv.setVisibility(View.VISIBLE);
-                statusTv.setText(s);
-            }
+        viewModel.getStatus().observe(this, s -> {
+            statusTv.setVisibility(View.VISIBLE);
+            statusTv.setText(s);
         });
     }
 
@@ -89,13 +83,10 @@ public class SharedSecretDialog extends DialogFragment implements View.OnClickLi
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.enter_shared_secret)
                 .setView(view)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        final String text = editText.getText().toString().trim();
-                        PrefsManager.writeSharedSecret(text);
-                        viewModel.setValue(getString(R.string.your_shared_secret, text));
-                    }
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    final String text = editText.getText().toString().trim();
+                    PrefsManager.writeSharedSecret(text);
+                    viewModel.setValue(getString(R.string.your_shared_secret, text));
                 })
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();

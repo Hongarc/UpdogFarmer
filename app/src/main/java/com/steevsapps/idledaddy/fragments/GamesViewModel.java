@@ -12,7 +12,6 @@ import com.steevsapps.idledaddy.steam.model.GamesOwnedResponse;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -49,12 +48,7 @@ public class GamesViewModel extends ViewModel {
 
     void setGames(List<Game> games) {
         if (sortId == SORT_ALPHABETICALLY) {
-            Collections.sort(games, new Comparator<Game>() {
-                @Override
-                public int compare(Game game1, Game game2) {
-                    return game1.name.toLowerCase().compareTo(game2.name.toLowerCase());
-                }
-            });
+            Collections.sort(games, (game1, game2) -> game1.name.toLowerCase().compareTo(game2.name.toLowerCase()));
         } else if (sortId == SORT_HOURS_PLAYED) {
             Collections.sort(games, Collections.reverseOrder());
         } else if (sortId == SORT_HOURS_PLAYED_REVERSED) {
