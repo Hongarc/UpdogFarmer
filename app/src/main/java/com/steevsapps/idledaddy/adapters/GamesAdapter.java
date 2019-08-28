@@ -113,7 +113,6 @@ public class GamesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public void setCurrentGames(ArrayList<Game> games) {
         currentGames = games;
-        notifyDataSetChanged();
     }
 
     public void setHeaderEnabled(boolean b) {
