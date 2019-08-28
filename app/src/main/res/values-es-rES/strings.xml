@@ -45,7 +45,6 @@
     <string name="home">Menú principal</string>
     <string name="games">Juegos</string>
     <string name="no_games_found">No se pudo obtener la lista de juegos.</string>
-    <string name="now_playing">Jugando a</string>
     <string name="error_not_logged_in">Tienes que iniciar sesión en Steam</string>
     <string name="invalid_password">Contraseña incorrecta</string>
     <string name="steamguard_required">Introducir código de Steam Guard</string>
@@ -84,7 +83,6 @@
     <string name="refresh">Recargar</string>
     <string name="last_session">Última sesión</string>
     <string name="play_all">Jugar a todos</string>
-    <string name="remove_ads">Eliminar publicidad</string>
     <string name="logcat">Enviar registro</string>
     <string name="sort">Ordenar</string>
     <string name="sort_alphabetically">Alfabéticamente</string>
@@ -95,9 +93,6 @@
     <string name="discovering">Descubriendo %s (%d/%d)</string>
     <string name="discovery_finished">Se terminó de ver la lista de descubrimiento.</string>
     <string name="discovery_error">No se pudo terminar de ver la lista de descubrimiento. Inténtalo de nuevo más tarde.</string>
-    <string name="auto_vote">Votar automáticamente en los Premios Steam</string>
-    <string name="vote_successful">Voto registrado.</string>
-    <string name="vote_failed">Fallo en la votación.</string>
     <string name="apikey_access_denied">La clave de acceso de la API de Steam fue rechazada, se usará una clave alternativa.</string>
     <string name="apikey_register_failed">No se pudo registrar la clave de la API, se usará una clave alternativa.</string>
     <string name="pref_language">Language</string>
@@ -106,15 +101,6 @@
     <string name="sum_gdpr_consent">Under the EU\'s General Data Protection Regulation (GDPR), a user\'s consent is required before displaying ads. Click here to revoke your consent.</string>
     <string name="pref_use_custom_loginid">Use Custom Login ID</string>
     <string name="sum_use_custom_loginid">Enabling this option will allow you to run other SteamKit apps (such as Ice Client) at the same time as Idle Daddy. If unsure, leave this off. (Requires restart)</string>
-    <string name="gdpr_consent_not_needed">Not needed. Idle Daddy Premium doesn\'t display ads.</string>
-    <string name="summer_event">Summer Event</string>
-    <string name="play_saliens">Play Saliens (Just get trading cards)</string>
-    <string name="play_saliens_indefinitely">Play Saliens Indefinitely</string>
-    <string name="play_saliens_desc">You can earn up to 3 trading cards each day by playing the Summer Salien game. This event ends on July 5th.</string>
-    <string name="playing_saliens">Playing Saliens (%d/%d)…</string>
-    <string name="playing_saliens_indefinitely">Playing Saliens…\nScore: %s/%s\nLevel: %s</string>
-    <string name="success_check_inventory">Success! Check your inventory for new trading cards.</string>
-    <string name="play_saliens_failed">Unable to auto play Saliens right now. Try again later.</string>
     <string name="english">English</string>
     <string name="german">German</string>
     <string name="russian">Russian</string>
@@ -149,9 +135,7 @@
     <string name="spring_cleaning_title">Spring Cleaning Event</string>
     <string name="spring_cleaning_desc">Complete tasks to level up your Spring Cleaning Event badge. This event ends May 28th.</string>
     <string name="complete_daily_tasks">Complete Daily Tasks</string>
-    <string name="complete_projects">Complete Project Tasks</string>
     <string name="daily_tasks_completed">Daily tasks completed. Come back again tomorrow.</string>
-    <string name="project_tasks_completed">Project tasks completed. You only need to do this once.</string>
     <string name="shared_secret_desc">Import the \'shared_secret\' code from your mobile authenticator. This allows Idle Daddy to automatically log in again when the login key expires.</string>
     <string name="import_shared_secret">Import shared_secret</string>
     <string name="enter_manually">Enter manually</string>
@@ -159,12 +143,8 @@
     <string name="device_not_rooted">Your device must be rooted to use this option.</string>
     <string name="your_shared_secret">Your shared_secret: %s</string>
     <string name="import_shared_secret_failed">Failed to import shared_secret! Make sure you\'re using the Steam mobile authenticator.</string>
-    <string name="next_round_countdown">Next round: %02d:%02d</string>
-    <string name="reporting_score">Reporting score…</string>
-    <string name="boss_hp">Boss HP: %d</string>
     <string name="sort_hours_played_reversed">Hours Played (reversed)</string>
     <!-- Untranslated strings: -->
-    <string name="door_open">Open Cottage Door (Winter Sale 2018)</string>
     <string name="door_success">Door opened!</string>
     <string name="door_fail">Unable to open any doors. Try again tomorrow</string>
     <!-- End untranslated strings -->

@@ -27,7 +27,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep class android.support.v7.widget.SearchView { *; }
+-keep class androidx.appcompat.widget.SearchView { *; }
 -keeppackagenames org.jsoup.nodes
 
 # Spongy Castle
@@ -65,6 +65,9 @@
 -dontwarn okio.**
 -dontwarn javax.annotation.**
 -dontwarn org.conscrypt.**
+-dontwarn sun.misc.Unsafe
+-dontwarn kotlin.coroutines.Continuation
+-dontwarn com.google.common.collect.MinMaxPriorityQueue
 # A resource is loaded with a relative path so the package of this class must be preserved.
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 -dontwarn android.test.**
@@ -73,8 +76,11 @@
 # Retain generic type information for use by reflection by converters and adapters.
 -keepattributes Signature
 # Retain service method parameters.
--keepclassmembernames,allowobfuscation interface * {
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
     @retrofit2.http.* <methods>;
 }
 # Ignore annotation used for build tooling.
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+-dontwarn retrofit2.KotlinExtensions
+-dontwarn retrofit2.KotlinExtensions$*

@@ -7,8 +7,7 @@
             android:id="@+id/logout"
             android:title="@string/logout" />
     </group>
-    <group android:id="@+id/checkable_group"
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
             android:icon="@drawable/ic_home_white_24dp"
@@ -23,8 +22,7 @@
             android:icon="@drawable/ic_settings_white_24dp"
             android:title="@string/settings" />
     </group>
-    <group android:id="@+id/other_group"
-        android:checkableBehavior="none">
+    <group android:checkableBehavior="none">
         <item android:id="@+id/about"
             android:icon="@drawable/ic_info_outline_white_24dp"
             android:title="@string/about" />
