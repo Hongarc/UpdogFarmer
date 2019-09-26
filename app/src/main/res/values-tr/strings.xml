@@ -100,8 +100,19 @@
     <string name="discovering">Keşfediliyor %s (%d/%d)</string>
     <string name="discovery_finished">Keşif Kuyruğu tamamlandı </string>
     <string name="discovery_error">Keşif Kuyruğu tamamlanamadı. Daha sonra tekrar dene</string>
-    <string name="apikey_access_denied">Steam API kodu erişimi engellendi, using a built-in key.</string>
-    <string name="apikey_register_failed">API kodu kaydı başarısız, using a built-in key.</string>
+    <string name="auto_vote">Otomatik oyla (Steam Ödülleri)</string>
+    <string name="vote_successful">Oy verme tamamlandı!</string>
+    <string name="vote_failed">Oy verme başarısız!</string>
+    <string name="summer_event">Yaz Etkinliği</string>
+    <string name="play_saliens">İndirin Canavarları (Saliens) oyna (Yalnızca takas kartlarını almak için)</string>
+    <string name="play_saliens_indefinitely">Saliens oyna (Puan kazanıp seviye atlamak için)</string>
+    <string name="play_saliens_desc">Her gün Saliens oynayarak 3 takas kartı kazanabilirsin. Bu etkinlik 5 Temmuz\'da bitecek.</string>
+    <string name="playing_saliens">Saliens oynanıyor (%d/%d)</string>
+    <string name="playing_saliens_indefinitely">Saliens oynanıyor\nPuan: %s/%s\nSeviye: %s</string>
+    <string name="success_check_inventory">Başarılı! Yeni takas kartlarını Envanterinden kontrol et.</string>
+    <string name="play_saliens_failed">Şu anda Saliens oynanamadı. Daha sonra tekrar dene.</string>
+    <string name="apikey_access_denied">Steam API kodu erişimi engellendi, dahili anahtarı kullanın.</string>
+    <string name="apikey_register_failed">API kodu kaydı başarısız, dahili anahtarı kullanın.</string>
     <string name="english">İngilizce</string>
     <string name="german">Almanca</string>
     <string name="russian">Rusça</string>
